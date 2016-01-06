@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name    TweetDeck Clear
 // @namespace   http://b1nj.fr
-// @version 0.2
+// @version 0.3
 // @description Add buttons to tweetdeck for clear all tweets or column tweets
 // @match   https://tweetdeck.twitter.com/*
 // @match   http://tweetdeck.twitter.com/*
