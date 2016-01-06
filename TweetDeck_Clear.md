@@ -10,15 +10,14 @@ Userscript TweetDeck Clear add buttons to clear all tweets or column tweets.
 
 It requires the installation of an extension specific to your browser. These extensions help simplify management tasks like installing, removing and updating userscripts.
 
-[Greasemonkey](https://addons.mozilla.org/fr/firefox/addon/greasemonkey/) for Firefox
-[Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) for Chrome
+- [Greasemonkey](https://addons.mozilla.org/fr/firefox/addon/greasemonkey/) for Firefox
+- [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) for Chrome
 
-After you can [install TweetDeck Clear](https://raw.githubusercontent.com/b1nj/userscripts/master/TweetDeck_Clear.user.js)
+After you can [install TweetDeck Clear](https://raw.githubusercontent.com/b1nj/userscripts/master/TweetDeck_Clear.user.js).
 
 ## Screenshots
 
-![screenshot all](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_1.jpg)
-![screenshot column](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_1.jpg)
+![screenshot all](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_1.jpg) ![screenshot column](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_2.jpg)
 
 ## Code
 
