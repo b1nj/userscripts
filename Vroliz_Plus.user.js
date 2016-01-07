@@ -3,7 +3,7 @@
 // @namespace   http://b1nj.fr
 // @description Améliore l'ergonomie du site Vroliz. Ajoute des liens vers la recherche Allo ciné.
 // @include     http://www.vroliz.com/*
-// @version     0.1
+// @version     0.2
 // @grant       none
 // @copyright   B1nj
 // @license GPL version 3 or any later version; www.gnu.org/copyleft/gpl.htm
@@ -12,6 +12,15 @@
 
 
 $(function() {
+  
+  // Déblocage automatiquement entrée site
+  
+  var gtl = GetCookie('gtl');
+  if (gtl == 2) {
+    document.location.href = 'http://www.vroliz.com';
+  }
+
+  // Ajout liens Allo Ciné
   
   var link = 'http://www.allocine.fr/recherche/?q=';
   
