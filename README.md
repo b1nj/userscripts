@@ -1,8 +1,8 @@
 # User Scripts
 
-This is a collection of user scripts I wrote. They're tested with Greasemonkey for Firefox.
+This is a collection of user scripts I wrote. They're tested with [Greasemonkey](https://addons.mozilla.org/fr/firefox/addon/greasemonkey/) for Firefox.
 
-You can also find these scripts in my personal script sections on Greasy Fork and OpenUserJS.
+You can also find these scripts in my personal script sections on [Greasy Fork](https://greasyfork.org/fr/users/26353-b1nj) and [OpenUserJS](https://openuserjs.org/users/b1nj).
 
 ## Summary
 
