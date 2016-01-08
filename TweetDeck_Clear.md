@@ -4,7 +4,7 @@
 
 In [TweetDeck](https://tweetdeck.twitter.com/) it's not easy to clear each column after read the tweets. Three clicks on each columns are necessary.
 
-Userscript TweetDeck Clear add buttons to clear all tweets or column tweets.
+Userscript TweetDeck Clear add buttons to clear all tweets or column tweets an add keyboard shortcuts.
 
 ## How do I use a TweetDeck Clear?
 
@@ -17,7 +17,7 @@ After you can [install TweetDeck Clear](https://raw.githubusercontent.com/b1nj/u
 
 ## Screenshots
 
-![screenshot all](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_1.jpg) ![screenshot column](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_2.jpg)
+![screenshot all](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_1.jpg) ![screenshot column](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_2.jpg) ![screenshot keyboard shortcuts](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_3.jpg)
 
 ## Code
 
