@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name    TweetDeck Clear
 // @namespace   http://b1nj.fr
-// @version 0.5
+// @version 0.6
 // @icon https://ton.twimg.com/tweetdeck-web/web/assets/logos/favicon.3d5d8f1cbe.ico
 // @description Add buttons and keyboard shortcuts to tweetdeck for clear all tweets or column tweets
 // @match   https://tweetdeck.twitter.com/*
@@ -18,17 +18,17 @@ $(function() {
     // Wait for the complete loading of the ajax page
     // I have tried unsuccessfully other solutions with ajaxStop() for example.
     window.setTimeout(load, 5000);
-    
+
     function load() {
         addButtons();
         addKeyboardShortcuts();
         addTextKeyboardShortcuts();
     }
-    
+
 
     var button = '<button style="position: absolute; right: 10px; top: -10px; padding-bottom: 0px;" type="button" class="js-user-button btn btn-alt btn-neutral btn-options-tray padding-hn "> <i class="icon icon-clear-timeline"></i> <span class="label">Clear</span> </button>';
     var buttonAll = '<a type="button" class="js-user-buttonAll padding-hl app-nav-link cf"><div class="obj-left"> <i class="icon icon-clear-timeline"></i> </div> <div class="nbfc padding-ts hide-condensed">Clear all</div> </a>';
-    
+
     function addButtons() {
 
         // Buttons clear
@@ -59,23 +59,32 @@ $(function() {
         });
         $('a[data-action="options"]', $col).trigger('click');
     }
-    
-    
+
+
     // Add Keyboard shortcuts
     var key = [];
     function addKeyboardShortcuts() {
         $(document).on("keydown keyup", function(e){
             key[e.keyCode] = e.type == 'keydown';
 
-            if (test_key('C') && $('.js-column.is-focused').length) {
-                $('.js-column.is-focused').find('.js-user-button').trigger('click');
-                key = [];
+            if (test_key('del')) {
+                $jsColumnFocused = $('.js-column.is-focused');
+                if ($jsColumnFocused.length) {
+                    $jsColumnFocused.find('.js-user-button').trigger('click');
+                    key = [];
+                }
+
+                $isSelectedTweet = $('.is-selected-tweet');
+                if ($isSelectedTweet.length) {
+                    $isSelectedTweet.parents('.js-column').find('.js-user-button').trigger('click');
+                    key = [];
+                }
             }
 
-            if (test_keys('alt', 'C')) {
+            if (test_keys('alt', 'del')) {
                 $('.js-user-buttonAll').trigger('click');
                 key = [];
-            }        
+            }
         });
     }
 
@@ -86,6 +95,7 @@ $(function() {
             "ctrl":  17,
             "shift": 16,
             "C":     67,
+            "del":   46,
         };
         return key[selkey] || key[alias[selkey]];
     }
@@ -101,18 +111,19 @@ $(function() {
         }
         return status;
     }
-    
-    
+
+
     // Add text Keyboard shortcuts in modal
-    var txt  = '<dd id="js-keyboard-clear" class="keyboard-shortcut-definition"><span class="text-like-keyboard-key">C</span> + <span class="text-like-keyboard-key">1</span> … <span class="text-like-keyboard-key">9</span>  Clear column 1－9</dd>'
-             + '<dd class="keyboard-shortcut-definition"><span class="text-like-keyboard-key">Alt</span> + <span class="text-like-keyboard-key">C</span> Clear all</dd>';
-       
+    var txt  = '<dd class="keyboard-shortcut-definition"><span class="text-like-keyboard-key">Del</span> Clear active column</dd>'
+             + '<dd id="js-keyboard-clear" class="keyboard-shortcut-definition"><span class="text-like-keyboard-key">1</span>…<span class="text-like-keyboard-key">9</span> + <span class="text-like-keyboard-key">Del</span>  Clear column 1－9</dd>'
+             + '<dd class="keyboard-shortcut-definition"><span class="text-like-keyboard-key">Alt</span> + <span class="text-like-keyboard-key">Del</span> Clear all</dd>';
+
     function addTextKeyboardShortcuts() {
        $('#open-modal').on("DOMSubtreeModified", function(){
            if (!$('#js-keyboard-clear').length) {
                $('.keyboard-shortcut-list').first().append(txt);
            }
        });
-    }    
+    }
 
 });
