@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name    TweetDeck Clear
 // @namespace   http://b1nj.fr
-// @version 0.6.2
+// @version 0.6.3
 // @icon https://ton.twimg.com/tweetdeck-web/web/assets/logos/favicon.3d5d8f1cbe.ico
 // @description Add buttons and keyboard shortcuts to tweetdeck for clear all tweets or column tweets
 // @match   https://tweetdeck.twitter.com/*
