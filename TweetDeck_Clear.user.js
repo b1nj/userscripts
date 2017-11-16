@@ -75,7 +75,7 @@ function addKeyboardShortcuts() {
             }
         }
 
-        if (!userIsReplying && (test_keys('alt', 'del') || test_keys('mac-cmd', 'mac-del'))) {
+        if (!userIsReplying && (test_keys('alt', 'del') || test_keys('ctrl', 'mac-del'))) {
             $('.js-user-buttonAll').trigger('click');
             key = [];
         }
