@@ -50,7 +50,7 @@ function addKeyboardShortcuts() {
     $(document).on("keydown keyup", function(e){
         key[e.keyCode] = e.type == 'keydown';
 
-        if (test_key('del')) {
+        if (test_key('del') || test_key('mac-del')) {
             $jsColumnFocused = $('.js-column.is-focused');
             if ($jsColumnFocused.length) {
                 $jsColumnFocused.find('.js-user-button').trigger('click');
@@ -79,6 +79,7 @@ function test_key(selkey){
         "shift": 16,
         "C":     67,
         "del":   46,
+        "mac-del"; 8
     };
     return key[selkey] || key[alias[selkey]];
 }
