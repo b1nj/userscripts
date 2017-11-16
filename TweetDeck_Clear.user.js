@@ -90,7 +90,7 @@ function test_key(selkey){
         "shift": 16,
         "C":     67,
         "del":   46,
-        "mac-del"; 8
+        "mac-del": 8
     };
     return key[selkey] || key[alias[selkey]];
 }
