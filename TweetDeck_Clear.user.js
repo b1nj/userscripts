@@ -48,9 +48,14 @@ function clearTweets($col) {
 var key = [];
 function addKeyboardShortcuts() {
     $(document).on("keydown keyup", function(e){
+
+        // First check if user has an open tweet reply window. If so, ignore any "Delete" keypress
+        var userIsReplying = $('.js-inline-reply').length > 0;
+
         key[e.keyCode] = e.type == 'keydown';
 
-        if (test_key('del') || test_key('mac-del')) {
+        if (!userIsReplying && (test_key('del') || test_key('mac-del'))) {
+        
             $jsColumnFocused = $('.js-column.is-focused');
             if ($jsColumnFocused.length) {
                 $jsColumnFocused.find('.js-user-button').trigger('click');
@@ -64,7 +69,7 @@ function addKeyboardShortcuts() {
             }
         }
 
-        if (test_keys('alt', 'del')) {
+        if (!userIsReplying && (test_keys('alt', 'del') || test_keys('mac-cmd', 'mac-del'))) {
             $('.js-user-buttonAll').trigger('click');
             key = [];
         }
