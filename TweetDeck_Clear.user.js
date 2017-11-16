@@ -49,8 +49,8 @@ var key = [];
 function addKeyboardShortcuts() {
     $(document).on("keydown keyup", function(e){
 
-        // First check if user has an open tweet reply window. If so, ignore any "Delete" keypress
-        var userIsReplying = $('.js-inline-reply').length > 0;
+        // First check if user has an open tweet compose or reply window. If so, ignore any "Delete" keypress
+        var userIsReplying = $('.js-inline-reply').length > 0 || $('.js-compose-text').is(':focus');
 
         // Next check if user is viewing the expanded detail of a selected tweet, in which case Delete key should just return to column view and not clear the column.
         var userIsReturningFromDetail = $('.js-tweet-detail').length > 0;
