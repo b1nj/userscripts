@@ -73,12 +73,15 @@ function addKeyboardShortcuts() {
                 $isSelectedTweet.parents('.js-column').find('.js-user-button').trigger('click');
                 key = [];
             }
-        } else key = [];
+        }
 
         if (!userIsReplying && (test_keys('alt', 'del') || test_keys('mac-cmd', 'mac-del'))) {
             $('.js-user-buttonAll').trigger('click');
             key = [];
-        } else key = [];
+        }
+        
+        // If we are skipping because user is replying or returning from detail, still clear out the key array so those keypresses don't get counted with future keypresses
+        if (userIsReplying || userIsReturningFromDetail) key = [];
     });
 }
 
