@@ -10,7 +10,7 @@ You can also find these scripts in my personal script sections on [Greasy Fork](
 
 Add buttons to tweetdeck for clear all tweets or column tweets
 
-[Description](https://github.com/b1nj/userscripts/blob/master/TweetDeck_Clear.md) | [Install](https://raw.githubusercontent.com/b1nj/userscripts/master/TweetDeck_Clear.user.js)
+[Description](https://github.com/b1nj/userscripts/blob/master/TweetDeck_Clear.md) | [Install](https://raw.githubusercontent.com/b1nj/userscripts/master/TweetDeck_Clear.user.js) | [Firefox plugin](https://addons.mozilla.org/fr/firefox/addon/tweetdeck-plus/)
 
 ### Vroliz plus
 
