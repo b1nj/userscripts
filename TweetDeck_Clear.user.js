@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name    TweetDeck Clear
 // @namespace   http://b1nj.fr
-// @version 0.6.2
+// @version 0.6.3
 // @icon https://ton.twimg.com/tweetdeck-web/web/assets/logos/favicon.3d5d8f1cbe.ico
 // @description Add buttons and keyboard shortcuts to tweetdeck for clear all tweets or column tweets
 // @match   https://tweetdeck.twitter.com/*
@@ -48,9 +48,20 @@ function clearTweets($col) {
 var key = [];
 function addKeyboardShortcuts() {
     $(document).on("keydown keyup", function(e){
+
+        // First check if user has an open tweet compose or reply window. If so, ignore any "Delete" keypress
+        var userIsReplying = $('.js-inline-reply').length > 0 || $('.js-compose-text').is(':focus');
+
+        // Next check if user is viewing the expanded detail of a selected tweet, in which case Delete key should just return to column view and not clear the column.
+        var userIsReturningFromDetail = $('.js-tweet-detail').length > 0;
+
         key[e.keyCode] = e.type == 'keydown';
 
-        if (test_key('del')) {
+        if (
+        	(!userIsReplying && !userIsReturningFromDetail) && 
+        	(test_key('del') || test_key('mac-del'))
+        ) {
+        
             $jsColumnFocused = $('.js-column.is-focused');
             if ($jsColumnFocused.length) {
                 $jsColumnFocused.find('.js-user-button').trigger('click');
@@ -64,10 +75,13 @@ function addKeyboardShortcuts() {
             }
         }
 
-        if (test_keys('alt', 'del')) {
+        if (!userIsReplying && (test_keys('alt', 'del') || test_keys('ctrl', 'mac-del'))) {
             $('.js-user-buttonAll').trigger('click');
             key = [];
         }
+        
+        // If we are skipping because user is replying or returning from detail, still clear out the key array so those keypresses don't get counted with future keypresses
+        if (userIsReplying || userIsReturningFromDetail) key = [];
     });
 }
 
@@ -79,6 +93,7 @@ function test_key(selkey){
         "shift": 16,
         "C":     67,
         "del":   46,
+        "mac-del": 8
     };
     return key[selkey] || key[alias[selkey]];
 }
