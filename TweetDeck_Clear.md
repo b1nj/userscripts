@@ -15,6 +15,8 @@ It requires the installation of an extension specific to your browser. These ext
 
 After you can [install TweetDeck Clear](https://raw.githubusercontent.com/b1nj/userscripts/master/TweetDeck_Clear.user.js).
 
+There is also a [Firefox Add-on](https://addons.mozilla.org/fr/firefox/addon/tweetdeck-plus/)
+
 ## Screenshots
 
 ![screenshot all](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_1.jpg) ![screenshot column](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_2.jpg) ![screenshot keyboard shortcuts](https://raw.githubusercontent.com/b1nj/userscripts/master/screenshots/TweetDeck_Clear_3.jpg)
