@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name    TweetDeck Clear
 // @namespace   http://b1nj.fr
-// @version 0.6.4
+// @version 0.6.5
 // @icon https://ton.twimg.com/tweetdeck-web/web/assets/logos/favicon.3d5d8f1cbe.ico
 // @description Add buttons and keyboard shortcuts to tweetdeck for clear all tweets or column tweets
 // @match   https://tweetdeck.twitter.com/*
 // @match   http://tweetdeck.twitter.com/*
 // @match   https://www.tweetdeck.twitter.com/*
 // @match   http://www.tweetdeck.twitter.com/*
+// @require https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
 // @grant       none
 // @copyright   B1nj
 // @license License:X11 (MIT)
@@ -35,13 +36,13 @@ function addButtonAll() {
 }
 
 function clearTweets($col) {
-    $buttonOptions = $('a[data-action="options"]', $col);
-    $buttonOptions.trigger('click');
+    $buttonOptions = $('a[data-action="options"]', $col)[0];
+    $buttonOptions.click();
     window.setTimeout(function ($col, $buttonOptions) {
-        $('button[data-action="clear"]', $col).trigger('click');
-        $buttonOptions.trigger('click');
-    }, 1000, $col, $buttonOptions);    
-} 
+        $('button[data-action="clear"]', $col)[0].click();
+        $buttonOptions.click();
+    }, 1000, $col, $buttonOptions);
+}
 
 
 // Add Keyboard shortcuts
@@ -58,10 +59,9 @@ function addKeyboardShortcuts() {
         key[e.keyCode] = e.type == 'keydown';
 
         if (
-        	(!userIsReplying && !userIsReturningFromDetail) && 
-        	(test_key('del') || test_key('mac-del'))
+            (!userIsReplying && !userIsReturningFromDetail) &&
+            (test_key('del') || test_key('mac-del'))
         ) {
-        
             $jsColumnFocused = $('.js-column.is-focused');
             if ($jsColumnFocused.length) {
                 $jsColumnFocused.find('.js-user-button').trigger('click');
@@ -79,7 +79,7 @@ function addKeyboardShortcuts() {
             $('.js-user-buttonAll').trigger('click');
             key = [];
         }
-        
+
         // If we are skipping because user is replying or returning from detail, still clear out the key array so those keypresses don't get counted with future keypresses
         if (userIsReplying || userIsReturningFromDetail) key = [];
     });
@@ -97,6 +97,7 @@ function test_key(selkey){
     };
     return key[selkey] || key[alias[selkey]];
 }
+
 function test_keys(){
     var i,
         keylist = arguments,
