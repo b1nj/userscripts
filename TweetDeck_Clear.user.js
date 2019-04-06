@@ -17,7 +17,7 @@
 
 function addButtons() {
     var button = '<button style="position: absolute; right: 10px; top: -10px; padding-bottom: 0px;" type="button" class="js-user-button Button--link btn-options-tray padding-hn "> <i class="icon icon-clear-timeline"></i> <span class="label">Clear</span> </button>';
-    window.TD_mustaches["column/column_header.mustache"] = window.TD_mustaches["column/column_header.mustache"].replace(' </header>', button + ' </header>');
+    window.eval("window.TD_mustaches['column/column_header.mustache'] = window.TD_mustaches['column/column_header.mustache'].replace(/\\\s*<\\\/header>/, '" + button + " </header>');");
 
     $(document).on('click', '.js-user-button', function () {
         clearTweets($(this).parents('.js-column'));
@@ -25,8 +25,8 @@ function addButtons() {
 }
 
 function addButtonAll() {
-    var buttonAll = '<a type="button" class="js-user-buttonAll padding-hl app-nav-link cf"><div class="obj-left"> <i class="icon icon-clear-timeline"></i> </div> <div class="nbfc padding-ts hide-condensed">Clear all</div> </a>';
-    window.TD_mustaches["topbar/app_header.mustache"] = window.TD_mustaches["topbar/app_header.mustache"].replace('</a>   </nav>','</a> ' + buttonAll + ' </nav>');
+    var buttonAll = '<a class="js-user-buttonAll link-clean cf app-nav-link padding-h--10"> <div class="obj-left margin-l--2"> <i class="icon icon-clear-timeline icon-medium"></i> </div> <div class="nbfc padding-ts hide-condensed txt-size--16 app-nav-link-text">Clear all</div> </a>';
+    window.eval("window.TD_mustaches['topbar/app_header.mustache'] = window.TD_mustaches['topbar/app_header.mustache'].replace(/<\\\/a>\\\s*<\\\/nav>/,'</a> " + buttonAll + " </nav>');");
 
     $(document).on('click', '.js-user-buttonAll', function () {
         $('.js-user-button').each(function() {
@@ -117,7 +117,7 @@ function addInfosShortcuts(){
              + '<dd id="js-keyboard-clear" class="keyboard-shortcut-definition"><span class="text-like-keyboard-key">1</span>…<span class="text-like-keyboard-key">9</span> + <span class="text-like-keyboard-key">Del</span>  Clear column 1－9</dd>'
              + '<dd class="keyboard-shortcut-definition"><span class="text-like-keyboard-key">Alt</span> + <span class="text-like-keyboard-key">Del</span> Clear all</dd>';
 
-    window.TD_mustaches["keyboard_shortcut_list.mustache"] = window.TD_mustaches["keyboard_shortcut_list.mustache"].replace('</dl>  <dl', ' ' + txt + ' </dl>  <dl');
+    window.eval("window.TD_mustaches['keyboard_shortcut_list.mustache'] = window.TD_mustaches['keyboard_shortcut_list.mustache'].replace(/<\\\/dl>\\\s*<dl/, ' " + txt + " </dl> <dl');");
 }
 
 addButtons();
